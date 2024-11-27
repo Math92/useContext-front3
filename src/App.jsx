@@ -5,22 +5,24 @@ import Navbar from './components/Navbar';
 import Body from './components/Body';
 
 function App() {
-
   const [language, setLanguage] = useState(languages.english);
 
   const handleChangeLA = () => {
-    setLanguage(() => {
-      //SUGERENCIA: Función que cambia de un idioma a otro (haciendo clic en el botón)
-    })
+    setLanguage((prevLanguage) => {
+      // Lógica para cambiar entre inglés, español y portugués
+      if (prevLanguage.id === "EN") return languages.spanish;
+      if (prevLanguage.id === "ES") return languages.portuguese;
+      return languages.english;
+    });
   }
 
   return (
-    <div className="App">
-      <>{/* SUGERENCIA: Agregue el Provider de LanguageContext */}
+    <LanguageContext.Provider value={{ language, handleChangeLA }}>
+      <div className="App">
         <Navbar />
         <Body />
-      </>
-    </div>
+      </div>
+    </LanguageContext.Provider>
   )
 }
 

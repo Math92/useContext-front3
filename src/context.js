@@ -1,17 +1,27 @@
 import { createContext } from 'react';
 import EN from "./languages/english.json"
-import PTBR from "./languages/portuguese.json"
 import ES from "./languages/spanish.json"
+import PTBR from "./languages/portuguese.json"
 
 export const languages = {
-    english: {
-        id: "EN",
-        text: EN
-    },
-    /* SUGERENCIA: agregue los demás idiomas */
+  english: {
+    id: "EN",
+    text: EN
+  },
+  spanish: {
+    id: "ES", 
+    text: ES
+  },
+  portuguese: {
+    id: "PTBR",
+    text: PTBR
+  }
 };
 
-/* SUGERENCIA: Usa createContext e inicia el idioma inglês como predeterminado */
-const LanguageContext = "";
+// Crear el contexto con un valor inicial
+const LanguageContext = createContext({
+  language: languages.english,
+  handleChangeLA: () => {}
+});
 
 export default LanguageContext;
